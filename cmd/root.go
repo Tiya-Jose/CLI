@@ -5,17 +5,12 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	"gitlab.com/v26/utils/mongo"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "hugo",
-	Short: "Hugo is a very fast static site generator",
-	Long: `A Fast and Flexible Static Site Generator built with
-				  love by spf13 and friends in Go.
-				  Complete documentation is available at http://hugo.spf13.com`,
-	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
-	},
+	Use:   "task",
+	Short: "Task is a CLI task Planner that is similar to creating a todo list and cutting off the done tasks",
 }
 
 func Execute() {
@@ -23,4 +18,10 @@ func Execute() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+}
+
+func MongoConnect(dbName, cName string, flag bool) mongo.Collection {
+	c := mongo.NewClient("", "", "localhost", 27017)
+	c.Connection()
+	return c.NewCollection(dbName, cName, flag)
 }

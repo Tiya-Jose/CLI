@@ -21,12 +21,28 @@ var doneCmd = &cobra.Command{
 			log.Println(err)
 		}
 		collection.Find(bson.M{}, bson.M{}, &tasks)
+		noOfTasks := len(tasks)
+		if id == 0 || id > noOfTasks {
+			fmt.Println("There is no such task")
+		}
 		for i, v := range tasks {
 			if i == id-1 {
+				fmt.Printf("Marking the task \"%s\" as done.\nRemoving it from your list...\n", v.Task)
 				collection.DeleteOne(bson.M{"task": v.Task})
 			}
 		}
-		fmt.Println("done called")
+		fmt.Println()
+		fmt.Println()
+		collection.Find(bson.M{}, bson.M{}, &tasks)
+		if tasks != nil {
+			fmt.Println("You have the following tasks left:")
+			for i, v := range tasks {
+				fmt.Println(i+1, v.Task)
+			}
+		} else {
+			fmt.Println("Well done!!\nYou have completed all of your tasks")
+
+		}
 	},
 }
 

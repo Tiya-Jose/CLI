@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	"CLI-Task-Planner/mongo"
+
 	"github.com/spf13/cobra"
-	"gitlab.com/v26/utils/mongo"
 )
 
 var rootCmd = &cobra.Command{

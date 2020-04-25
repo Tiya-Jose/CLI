@@ -19,10 +19,13 @@ var listCmd = &cobra.Command{
 	Short: "Lists all of your tasks",
 
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
 		collection.Find(bson.M{}, bson.M{}, &tasks)
-		for i, v := range tasks {
-			fmt.Println(i+1, v)
+		if tasks != nil {
+			for i, v := range tasks {
+				fmt.Println(i+1, v.Task)
+			}
+		} else {
+			fmt.Println("You have not added any tasks to your To-Do list.\nPlease add your tasks")
 		}
 	},
 }

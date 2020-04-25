@@ -5,8 +5,9 @@ import (
 	"log"
 	"strings"
 
+	"CLI-Task-Planner/mongo"
+
 	"github.com/spf13/cobra"
-	"gitlab.com/v26/utils/mongo"
 	"go.mongodb.org/mongo-driver/bson"
 )
 

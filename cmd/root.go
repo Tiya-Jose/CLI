@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"os"
 
-	"CLI-Task-Planner/mongo"
+	"task/mongo"
 
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "task",
-	Short: "Task is a CLI task Planner that is similar to creating a To-Do list and cutting off the done tasks",
+	Short: "Task is a CLI Task Planner that is similar to creating a To-Do list and cutting off the done tasks",
 }
 
 func Execute() {

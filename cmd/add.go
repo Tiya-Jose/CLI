@@ -5,7 +5,7 @@ import (
 	"log"
 	"strings"
 
-	"CLI-Task-Planner/mongo"
+	"task/mongo"
 
 	"github.com/spf13/cobra"
 	"go.mongodb.org/mongo-driver/bson"
@@ -14,10 +14,11 @@ import (
 var collection mongo.Collection
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "Adds a task to your tasks list",
+	Short: "Adds a task to your To-Do list",
 	Run: func(cmd *cobra.Command, args []string) {
 		task := strings.Join(args, " ")
-		fmt.Printf("Added \"%s\" to your tasks list\n", task)
+		fmt.Println()
+		fmt.Printf("Added \"%s\" to your To-Do list\n", task)
 		err := collection.InsertOne(bson.M{"task": task})
 		if err != nil {
 			log.Println(err)

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"CLI-Task-Planner/cmd"
+	"task/cmd"
 )
 
 func main() {

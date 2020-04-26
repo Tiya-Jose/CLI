@@ -1,3 +1,3 @@
 # CLI
 
-![Task Planner Demo](demo/demo.png)
+![Task Planner Demo](demo.png)
